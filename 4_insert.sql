@@ -50,7 +50,7 @@ INSERT INTO cena_paliwo(cena) VALUES(5.05);
 
 --TABELA KLIENT
 
-INSERT INTO klient(imie, nazwisko, miejscowosc, ulica, numer_mieszkania, numer_domu) VALUES('Stefan', 'Tarczynski', 'Gdañsk', 'Elblaska', '23', '43');
+INSERT INTO klient(imie, nazwisko, miejscowosc, ulica, numer_mieszkania, numer_domu) VALUES('Stefan', 'Tarczynski', 'GdaÅ„sk', 'Elblaska', '23', '43');
 INSERT INTO klient(imie, nazwisko, miejscowosc, ulica, numer_mieszkania, numer_domu) VALUES('Henryka', 'Szymborska', 'Elblag', 'Gdanska', '4', '63');
 INSERT INTO klient(imie, nazwisko, miejscowosc, ulica, numer_mieszkania, numer_domu) VALUES('Arnold', 'Boczek', 'Wroclaw', 'Polska', '3', '43');
 INSERT INTO klient(imie, nazwisko, miejscowosc, ulica, numer_mieszkania, numer_domu) VALUES('Slawomir', 'Potocki', 'Zakopane', 'Warszawska', '65', '53');
@@ -88,11 +88,6 @@ INSERT INTO dost_paliwa(nazwa_dostawcy) VALUES ('Petrolis');
 
 -- TABELA PRACOWNIK
 
-/*
-SELECT * FROM pensja;
-select * FROM dodatek;
-*/
---SELECT * FROM stanowisko;
 INSERT INTO pracownik(imie, nazwisko, pesel, miejscowosc, kod_pocztowy, ulica, numer_domu, numer_mieszkania, pensja_id_pensja, dodatek_id_dodatek, stanowisko_id_stanowisko, ubezp_id_ubezp, stan_zatr_id_stan_zatr)
 VALUES('Adam', 'Gluchy', 93854758923, 'Sopot', '12-345', 'Sucharskiego', '23', '23', 2, 3, 1, 2, 3);
 
@@ -121,10 +116,6 @@ INSERT INTO paragon(data_wystawienia) VALUES ('2018-05-03');
 INSERT INTO paragon(data_wystawienia) VALUES ('brak');
 
 -- TABELA FAKTURA
-/*
-ALTER TABLE faktura DROP COLUMN koszyk_id_koszyk;
-ALTER TABLE faktura DROP COLUMN zam_stacji_id_zam_stacji;
-*/
 
 INSERT INTO faktura(nip, nazwa_firmy, data_wystawienia) VALUES('23453', 'sklep', '2018-05-04');
 INSERT INTO faktura(nip, nazwa_firmy, data_wystawienia) VALUES('42345', 'Salon fryzjerski', '2018-04-04');
@@ -134,7 +125,7 @@ INSERT INTO faktura(nip, nazwa_firmy, data_wystawienia) VALUES('23453', 'kwiacia
 INSERT INTO faktura(nip, nazwa_firmy, data_wystawienia) VALUES('23453', 'uslugi transportowe', '2018-03-04');
 INSERT INTO faktura(nip, nazwa_firmy, data_wystawienia) VALUES('brak', 'brak', 'brak');
 
---TABELA KOSZYK    DOKONCZYC TRZEBA PO ZAM_STACJI
+--TABELA KOSZYK    
 
 INSERT INTO koszyk(suma_zamowienia, klient_id_klient, firma_id_firma, faktura_id_faktura, paragon_id_paragon, status_id_status, id_zam_stacji)
 VALUES(200, 2, 3, 1, 2, 2, 1);
@@ -148,15 +139,6 @@ INSERT INTO koszyk(suma_zamowienia, klient_id_klient, firma_id_firma, faktura_id
 VALUES(300, 1, 1, 2, 2, 1, 1);
 INSERT INTO koszyk(suma_zamowienia, klient_id_klient, firma_id_firma, faktura_id_faktura, paragon_id_paragon, status_id_status, id_zam_stacji)
 VALUES(50, 2, 2, 1, 1, 1, 2);
-
-/*
-SELECT * FROM klient; 1-6
-SELECT * FROM firma; 1-5 21
-SELECT * FROM faktura; 41-46 47
-SELECT * FROM paragon; 21-23 41
-SELECT * FROM status; 21-23
-SELECT * FROM zam_stacji; 59-64
-*/
 
 -- TABELA ZAM STACJI
 
@@ -173,18 +155,9 @@ VALUES('paliwo', 2500, 3, 3, 2, 1);
 INSERT INTO zam_stacji(towar, ilosc, towar_id_towar, dost_paliwa_id_dost_paliwa, faktura_id_faktura, status_id_status)
 VALUES('paliwo', 3000, 2, 3, 1, 1);
 
-/*
-SELECT* FROM towar; 41-43
-SELECT * FROM dost_paliwa; 1-3
-SELECT * FROM faktura;41-46 47
-SELECT * FROM status; 21-2
-SELECT * FROM zam_stacji;
-*/
 
-
-
---DROP TABLE zamowienie CASCADE CONSTRAINTS;
 --TABELA DYSTRYBUTOR
+
 INSERT INTO dystrybutor(numer_dystrybutora, cena_paliwo_id_cena_paliwo, rodz_pal_id_rodz_pal, dys_stat_id_dys_status)
 VALUES(1, 1, 1, 2 );
 INSERT INTO dystrybutor(numer_dystrybutora, cena_paliwo_id_cena_paliwo, rodz_pal_id_rodz_pal, dys_stat_id_dys_status)
@@ -198,11 +171,7 @@ VALUES(4, 1, 1, 3 );
 INSERT INTO dystrybutor(numer_dystrybutora, cena_paliwo_id_cena_paliwo, rodz_pal_id_rodz_pal, dys_stat_id_dys_status)
 VALUES(5, 2, 2, 1 );
 
-/*
-SELECT * FROM cena_paliwo; 1, 2, 3
-SELECT * FROM rodz_pal; 1, 2, 3
-SELECT * FROM dys_Stat; 1, 2, 3
-*/
+
 --TABELA ZAMOWIENIE
 INSERT INTO zamowienie(ilosc, koszyk_id_koszyk, pracownik_id_pracownik, dystrybutor_id_dystrybutor)
 VALUES(1, 2, 2, 2 );
@@ -216,9 +185,3 @@ INSERT INTO zamowienie(ilosc, koszyk_id_koszyk, pracownik_id_pracownik, dystrybu
 VALUES(1, 2, 6, 1 );
 INSERT INTO zamowienie(ilosc, koszyk_id_koszyk, pracownik_id_pracownik, dystrybutor_id_dystrybutor)
 VALUES(1, 1, 3, 1 );
-/*
-SELECT * FROM koszyk; 21-27
-SELECT * FROM pracownik;1-7
-SELECT * FROM dystrybutor;41-46
-SELECT* FROM zamowienie;
-*/
